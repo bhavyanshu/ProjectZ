@@ -1,0 +1,16 @@
+# Turn on the rewrite engine
+RewriteEngine  on
+# If the request doesn't end in .php (Case insensitive) continue processing rules
+RewriteCond %{REQUEST_URI} !\.php$ [NC]
+# If the request doesn't end in a slash continue processing the rules
+RewriteCond %{REQUEST_URI} [^/]$
+# Rewrite the request with a .php extension. L means this is the 'Last' rule
+RewriteRule ^/(.+)$ index.php?author=$1 [L,QSA]
+
+
+<Files *.txt>
+Order deny,allow
+Deny from All 
+Allow from 127.0.0.1
+</Files>
+Options -Indexes
